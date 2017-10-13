@@ -1,20 +1,13 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package classesDoProjeto;
 
-/**
- *
- * @author jeffe
- */
+
 public class Questao {
     private String pergunta ;
-    private String resposta;
-    private String alternativa[];
+    private boolean resposta;
+    private boolean alternativa[];
 
-    public Questao(String pergunta, String resposta, String[] alternativa) {
+    public Questao(String pergunta, boolean resposta, boolean [] alternativa) {
         this.pergunta = pergunta;
         this.resposta = resposta;
         this.alternativa = alternativa;
@@ -28,19 +21,19 @@ public class Questao {
         this.pergunta = pergunta;
     }
 
-    public String getResposta() {
+    public boolean getResposta() {
         return resposta;
     }
 
-    public void setResposta(String resposta) {
+    public void setResposta(boolean resposta) {
         this.resposta = resposta;
     }
 
-    public String[] getAlternativa() {
+    public boolean [] getAlternativa() {
         return alternativa;
     }
 
-    public void setAlternativa(String[] alternativa) {
+    public void setAlternativa(boolean [] alternativa) {
         this.alternativa = alternativa;
     }
     
