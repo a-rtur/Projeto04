@@ -3,6 +3,13 @@ import java.util.ArrayList;
 
 
 public class Quiz {
+    
+    public static int quantidade ;
+    public static double soma ;
+    public static double getMedia(){
+        return soma / (double)quantidade;
+    }
+    
      private static ArrayList<Questao>questoes;
      public static ArrayList<Questao>getQuestoes(){
          
