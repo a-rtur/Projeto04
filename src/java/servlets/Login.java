@@ -1,7 +1,8 @@
 package servlets;
 
+import classesDoProjeto.Banco;
+import classesDoProjeto.Jogadores;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -14,7 +15,14 @@ public class Login extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
         String nome = request.getParameter("txtNome");
-        session.setAttribute("nome", nome);
+        if (Banco.isRegistered(nome) == true) {
+            session.setAttribute("nome", nome);
+        }
+        else {
+            session.setAttribute("nome", nome);
+            Jogadores j = new Jogadores(nome);
+            Banco.getJogadores().add(j);
+        }
         response.sendRedirect(request.getContextPath() + "/home.jsp");
     }
 }

@@ -1,3 +1,5 @@
+<%@page import="classesDoProjeto.Banco"%>
+<%@page import="classesDoProjeto.Jogadores"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -29,14 +31,12 @@
             response.setHeader("Pragma", "no-cache"); // HTTP 1.0
             response.setHeader("Expires", "0"); // Proxy
             if (session.getAttribute("nome") != null) {
-                // Gerar perguntas e alternativas.
+                // Caso o usuário esteja logado, o código para para mostrar as perguntas deve ser colocado aqui.
             }
             else {
                 response.sendRedirect(request.getContextPath()+"/login.jsp");
             }
         %>
-        <div id="conteudo">
-        </div>
         <%@include file="WEB-INF/jspf/rodape.jspf" %>
     </body>
 </html>
