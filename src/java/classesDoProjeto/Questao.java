@@ -4,9 +4,9 @@ package classesDoProjeto;
 
 public class Questao {
     private String pergunta ;
-    private boolean resposta;
+    private String resposta;
 
-    public Questao(String pergunta, boolean resposta) {
+    public Questao(String pergunta, String resposta) {
         this.pergunta = pergunta;
         this.resposta = resposta;
     }
@@ -19,11 +19,11 @@ public class Questao {
         this.pergunta = pergunta;
     }
 
-    public boolean getResposta() {
+    public String getResposta() {
         return resposta;
     }
 
-    public void setResposta(boolean resposta) {
+    public void setResposta(String resposta) {
         this.resposta = resposta;
     } 
 }
