@@ -3,12 +3,22 @@ package classesDoProjeto;
 
 
 public class Questao {
+    private String idPergunta;
     private String pergunta ;
     private String resposta;
 
-    public Questao(String pergunta, String resposta) {
+    public Questao(String idPergunta,String pergunta, String resposta) {
+        this.idPergunta = idPergunta;
         this.pergunta = pergunta;
         this.resposta = resposta;
+    }
+
+    public String getIdPergunta() {
+        return idPergunta;
+    }
+
+    public void setIdPergunta(String idPergunta) {
+        this.idPergunta = idPergunta;
     }
     
     public String getPergunta() {

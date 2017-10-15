@@ -41,17 +41,18 @@
             
             <%
                 if(request.getParameter("finalizar")!=null){
-                    int acertos = 0;
+                    double acertos = 0;
                     for(int x = 0;x <10;x++){
-                        String resposta = request.getParameter(Quiz.getQuestoes().get(x).getPergunta());
+                        Questao p = Quiz.getQuestoes().get(x);
+                        String resposta = request.getParameter(p.getIdPergunta());
                         if(resposta != null){
-                            if(resposta.equals(Quiz.getQuestoes().get(x).getResposta())){
+                            if(resposta.equals(p.getResposta())){
                                 acertos++;
                             }
                         }
                     }
                     Quiz.quantidade++;
-                    Quiz.soma+=(100.0*((double)acertos/10.0));
+                    Quiz.soma+=acertos;
                     response.sendRedirect(request.getContextPath()+"/home.jsp");
                 }
             
@@ -59,13 +60,14 @@
             
             <form>
              <%for(int i=0;i<10;i++){
+                 Questao p = Quiz.getQuestoes().get(i);
                 %>
                 <h3><%=i+1%></h3>
-                <h4><%=Quiz.getQuestoes().get(i).getPergunta()%></h4>
-                <input type="radio" name="<%=Quiz.getQuestoes().get(i).getPergunta()%>"
+                <h4><%=p.getPergunta()%></h4>
+                <input type="radio" name="<%=p.getIdPergunta()%>"
                      value="V"/>
                 <%="Verdadeiro"%>       
-                <input type="radio" name="<%=Quiz.getQuestoes().get(i).getPergunta()%>"
+                <input type="radio" name="<%=p.getIdPergunta()%>"
                        value="F"/>
                 <%="Falso"%>           
             
