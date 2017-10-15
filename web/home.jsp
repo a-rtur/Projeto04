@@ -1,4 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="classesDoProjeto.Quiz" %>
+<%@page import="classesDoProjeto.Questao" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -23,5 +25,10 @@
             }
         %>
         <%@include file="WEB-INF/jspf/rodape.jspf" %>
+        
+        </br></br></br>
+        <h3>Teste realizado <%= Quiz.quantidade%></h3>
+        <h3>Media: <%=Quiz.getMedia()%></h3>
+        
     </body>
 </html>
