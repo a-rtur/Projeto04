@@ -1,3 +1,4 @@
+<%@page import="classesDoProjeto.Questao" %>
 <%@page import="classesDoProjeto.Quiz"%>
 <%@page import="classesDoProjeto.Banco"%>
 <%@page import="classesDoProjeto.Jogadores"%>
@@ -37,6 +38,22 @@
         <div id="conteudo">
             <h4>Sessão atual: <%=session.getAttribute("nome")%></h4>
             <h4>Posição 0 no array de perguntas: <%=Quiz.getQuestoes().get(0).getPergunta()%></h4>
+            
+            <form>
+             <%for(int i=0;i<10;i++){
+                    Questao p = Quiz.getQuestoes().get(i);
+                %>
+                <h3><%=i+1%></h3>
+                <h4><%=p.getPergunta()%></h4>
+                <input type="radio" name="<%=p.getPergunta()%>"
+                     value="<%=true%>"/>
+                <%="Verdadeiro"%>       
+                <input type="radio" name="<%=p.getPergunta()%>"
+                       value="<%=false%>"/>
+                <%="Falso"%>           
+            
+                 <%}%>
+            </form>  
         </div>
         <%
             }
