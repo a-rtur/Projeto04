@@ -2,6 +2,7 @@
 <%@page import="classesDoProjeto.Quiz"%>
 <%@page import="classesDoProjeto.Banco"%>
 <%@page import="classesDoProjeto.Jogadores"%>
+<%@page import="java.util.Collections"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -54,6 +55,7 @@
                     Quiz.quantidade++;
                     Quiz.soma+=acertos;
                     response.sendRedirect(request.getContextPath()+"/home.jsp");
+                    Collections.shuffle(Quiz.getQuestoes());
                 }
             
             %>
@@ -72,6 +74,7 @@
                 <%="Falso"%>           
             
                  <%}%>
+                 </br>
                  <input type="submit" name="finalizar" value="Finalizar"/>
             </form>  
         </div>
