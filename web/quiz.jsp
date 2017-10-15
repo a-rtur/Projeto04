@@ -1,3 +1,4 @@
+<%@page import="classesDoProjeto.Quiz"%>
 <%@page import="classesDoProjeto.Banco"%>
 <%@page import="classesDoProjeto.Jogadores"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -32,6 +33,12 @@
             response.setHeader("Expires", "0"); // Proxy
             if (session.getAttribute("nome") != null) {
                 // Caso o usuário esteja logado, o código para para mostrar as perguntas deve ser colocado aqui.
+        %>
+        <div id="conteudo">
+            <h4>Sessão atual: <%=session.getAttribute("nome")%></h4>
+            <h4>Posição 0 no array de perguntas: <%=Quiz.getQuestoes().get(0).getPergunta()%></h4>
+        </div>
+        <%
             }
             else {
                 response.sendRedirect(request.getContextPath()+"/login.jsp");

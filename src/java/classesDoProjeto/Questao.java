@@ -5,12 +5,10 @@ package classesDoProjeto;
 public class Questao {
     private String pergunta ;
     private boolean resposta;
-    private boolean alternativa[];
 
-    public Questao(String pergunta, boolean resposta, boolean [] alternativa) {
+    public Questao(String pergunta, boolean resposta) {
         this.pergunta = pergunta;
         this.resposta = resposta;
-        this.alternativa = alternativa;
     }
     
     public String getPergunta() {
@@ -27,15 +25,5 @@ public class Questao {
 
     public void setResposta(boolean resposta) {
         this.resposta = resposta;
-    }
-
-    public boolean [] getAlternativa() {
-        return alternativa;
-    }
-
-    public void setAlternativa(boolean [] alternativa) {
-        this.alternativa = alternativa;
-    }
-    
-    
+    } 
 }
