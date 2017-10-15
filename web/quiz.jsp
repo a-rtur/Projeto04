@@ -39,6 +39,25 @@
             <h4>Sessão atual: <%=session.getAttribute("nome")%></h4>
             <h4>Posição 0 no array de perguntas: <%=Quiz.getQuestoes().get(0).getPergunta()%></h4>
             
+            <%
+                if(request.getParameter("finalizar")!=null){
+                    int acertos = 0;
+                    for(int x = 0;x <10;x++){
+                        Questao p = Quiz.getQuestoes().get(x);
+                        String resposta = request.getParameter(p.getPergunta());
+                        if(resposta != null){
+                            if(resposta.equals(p.getResposta())){
+                                acertos++;
+                            }
+                        }
+                    }
+                    Quiz.quantidade++;
+                    Quiz.soma+=(100.0*((double)acertos/10.0));
+                    response.sendRedirect(request.getContextPath()+"/home.jsp");
+                }
+            
+            %>
+            
             <form>
              <%for(int i=0;i<10;i++){
                     Questao p = Quiz.getQuestoes().get(i);
@@ -46,13 +65,14 @@
                 <h3><%=i+1%></h3>
                 <h4><%=p.getPergunta()%></h4>
                 <input type="radio" name="<%=p.getPergunta()%>"
-                     value="<%=true%>"/>
+                     value="V"/>
                 <%="Verdadeiro"%>       
                 <input type="radio" name="<%=p.getPergunta()%>"
-                       value="<%=false%>"/>
+                       value="F"/>
                 <%="Falso"%>           
             
                  <%}%>
+                 <input type="submit" name="finalizar" value="Finalizar"/>
             </form>  
         </div>
         <%
