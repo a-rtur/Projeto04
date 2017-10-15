@@ -49,7 +49,7 @@ public class Quiz {
             Collections.shuffle(questoes);
         } 
         else {
-            Collections.shuffle(questoes);
+           // Collections.shuffle(questoes);
         }
         return questoes;
     }
