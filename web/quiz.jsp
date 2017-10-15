@@ -43,10 +43,9 @@
                 if(request.getParameter("finalizar")!=null){
                     int acertos = 0;
                     for(int x = 0;x <10;x++){
-                        Questao p = Quiz.getQuestoes().get(x);
-                        String resposta = request.getParameter(p.getPergunta());
+                        String resposta = request.getParameter(Quiz.getQuestoes().get(x).getPergunta());
                         if(resposta != null){
-                            if(resposta.equals(p.getResposta())){
+                            if(resposta.equals(Quiz.getQuestoes().get(x).getResposta())){
                                 acertos++;
                             }
                         }
@@ -60,14 +59,13 @@
             
             <form>
              <%for(int i=0;i<10;i++){
-                    Questao p = Quiz.getQuestoes().get(i);
                 %>
                 <h3><%=i+1%></h3>
-                <h4><%=p.getPergunta()%></h4>
-                <input type="radio" name="<%=p.getPergunta()%>"
+                <h4><%=Quiz.getQuestoes().get(i).getPergunta()%></h4>
+                <input type="radio" name="<%=Quiz.getQuestoes().get(i).getPergunta()%>"
                      value="V"/>
                 <%="Verdadeiro"%>       
-                <input type="radio" name="<%=p.getPergunta()%>"
+                <input type="radio" name="<%=Quiz.getQuestoes().get(i).getPergunta()%>"
                        value="F"/>
                 <%="Falso"%>           
             
