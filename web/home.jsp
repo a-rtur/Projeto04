@@ -44,7 +44,7 @@
         %>
             <br/>
             <br/>
-            <h1>Resultados recentes</h1><br/>
+            <h2>Resultados recentes</h2><br/>
             <table border="1" align="center">
                 <tr>
                     <th>Data</th>
@@ -68,7 +68,7 @@
                 } 
                 else {
         %>
-            <h3>Bem-vindo, efetue login para poder jogar, e acessar rankings!</h3>
+            <h3>Bem-vindo, efetue login para poder jogar, e acessar seu perfil!</h3>
         <%
                 }
         %>
