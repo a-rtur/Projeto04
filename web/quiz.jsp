@@ -70,10 +70,10 @@
                 <h3>Questão <%=i + 1%>:</h3>
                 <h4><%=p.getPergunta()%></h4>
                 <input type="radio" name="<%=p.getIdPergunta()%>"
-                       value="V"/>
+                       value="V" required/>
                 <%="Verdadeiro"%>       
                 <input type="radio" name="<%=p.getIdPergunta()%>"
-                       value="F"/>
+                       value="F" required/>
                 <%="Falso"%>           
                 <br/>
                 <br/>
