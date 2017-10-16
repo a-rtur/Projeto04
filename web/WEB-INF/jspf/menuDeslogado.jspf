@@ -11,6 +11,9 @@
                 <a class="nav-link active" href="home.jsp">Home<span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
+                <a class="nav-link active" href="ranking.jsp">Ranking<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link active" href="login.jsp">Login<span class="sr-only">(current)</span></a>
             </li>
         </ul>

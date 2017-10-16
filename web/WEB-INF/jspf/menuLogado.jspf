@@ -8,10 +8,13 @@
     <div class="collapse navbar-collapse" id="navbar">
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-                <a class="nav-link active" href="home.jsp">Home<span class="sr-only">(current)</span></a>
+                <a class="nav-link active" href="home.jsp">Meu Perfil<span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
                 <a class="nav-link active" href="quiz.jsp">Iniciar Quiz<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" href="ranking.jsp">Ranking<span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
                 <a class="nav-link active" href="Logoff">Logoff<span class="sr-only">(current)</span></a>
