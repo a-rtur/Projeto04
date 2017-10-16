@@ -1,7 +1,7 @@
-<%@page import="classesDoProjeto.Questao" %>
-<%@page import="classesDoProjeto.Quiz"%>
-<%@page import="classesDoProjeto.Banco"%>
-<%@page import="classesDoProjeto.Jogadores"%>
+<%@page import="data.Data"%>
+<%@page import="rankings.*"%>
+<%@page import="quiz.*" %>
+<%@page import="jogadores.*"%>
 <%@page import="java.util.Collections"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -20,12 +20,11 @@
             if (session.getAttribute("nome") != null) {
         %>
         <%@include file="WEB-INF/jspf/menuLogado.jspf" %>
-        <%        
-            }
-            else {
+        <%
+        } else {
         %>
         <%@include file="WEB-INF/jspf/menuDeslogado.jspf" %>
-        <%        
+        <%
             }
         %>
         <%
@@ -34,54 +33,57 @@
             response.setHeader("Pragma", "no-cache"); // HTTP 1.0
             response.setHeader("Expires", "0"); // Proxy
             if (session.getAttribute("nome") != null) {
-                // Caso o usuário esteja logado, o código para para mostrar as perguntas deve ser colocado aqui.
         %>
         <div id="conteudo">
-            <h4>Sessão atual: <%=session.getAttribute("nome")%></h4>
-            <h4>Posição 0 no array de perguntas: <%=Quiz.getQuestoes().get(0).getPergunta()%></h4>
-            
             <%
-                if(request.getParameter("finalizar")!=null){
-                    double acertos = 0;
-                    for(int x = 0;x <10;x++){
-                        Questao p = Quiz.getQuestoes().get(x);
+                if (request.getParameter("finalizar") != null) {
+                    int acertos = 0;
+                    for (int x = 0; x < 10; x++) {
+                        Questao p = BancoQuestoes.getQuestoes().get(x);
                         String resposta = request.getParameter(p.getIdPergunta());
-                        if(resposta != null){
-                            if(resposta.equals(p.getResposta())){
+                        if (resposta != null) {
+                            if (resposta.equals(p.getResposta())) {
                                 acertos++;
                             }
                         }
                     }
-                    Quiz.quantidade++;
-                    Quiz.soma+=acertos;
-                    response.sendRedirect(request.getContextPath()+"/home.jsp");
-                    Collections.shuffle(Quiz.getQuestoes());
+                    // Pegar o index do jogador no Banco pelo nome(único) dele.
+                    int pos = BancoJogadores.indexByName(session.getAttribute("nome").toString());
+                    // Adicionar informações do jogador no arrayList.
+                    BancoJogadores.getJogadores().get(pos).setQuantidadeJogos(1);
+                    BancoJogadores.getJogadores().get(pos).setJogosAnteriores(acertos);
+                    // Adicionar informações do jogo no ranking geral.
+                    Ranking r = new Ranking(session.getAttribute("nome").toString(), acertos, Data.retornarData());
+                    BancoRanking.getRankingGeral().add(r);
+                    // Redirecionar para home e enbaralhar arrayList do quiz.
+                    response.sendRedirect(request.getContextPath() + "/home.jsp");
+                    Collections.shuffle(BancoQuestoes.getQuestoes());
                 }
-            
+
             %>
-            
+
             <form>
-             <%for(int i=0;i<10;i++){
-                 Questao p = Quiz.getQuestoes().get(i);
+                <%for (int i = 0; i < 10; i++) {
+                        Questao p = BancoQuestoes.getQuestoes().get(i);
                 %>
-                <h3><%=i+1%></h3>
+                <h3>Questão <%=i + 1%>:</h3>
                 <h4><%=p.getPergunta()%></h4>
                 <input type="radio" name="<%=p.getIdPergunta()%>"
-                     value="V"/>
+                       value="V"/>
                 <%="Verdadeiro"%>       
                 <input type="radio" name="<%=p.getIdPergunta()%>"
                        value="F"/>
                 <%="Falso"%>           
-            
-                 <%}%>
-                 </br>
-                 <input type="submit" name="finalizar" value="Finalizar"/>
+                <br/>
+                <br/>
+                <%}%>
+                <br/>
+                <input type="submit" name="finalizar" value="Finalizar"/>
             </form>  
         </div>
         <%
-            }
-            else {
-                response.sendRedirect(request.getContextPath()+"/login.jsp");
+            } else {
+                response.sendRedirect(request.getContextPath() + "/login.jsp");
             }
         %>
         <%@include file="WEB-INF/jspf/rodape.jspf" %>
