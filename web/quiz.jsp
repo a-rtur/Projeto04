@@ -52,6 +52,7 @@
                     // Adicionar informações do jogador no arrayList.
                     BancoJogadores.getJogadores().get(pos).setQuantidadeJogos(1);
                     BancoJogadores.getJogadores().get(pos).setJogosAnteriores(acertos);
+                    BancoJogadores.getJogadores().get(pos).setSomaPontuacao(acertos);
                     // Adicionar informações do jogo no ranking geral.
                     Ranking r = new Ranking(session.getAttribute("nome").toString(), acertos, Data.retornarData());
                     BancoRanking.getRankingGeral().add(r);

@@ -6,6 +6,7 @@ import global.FormatoDecimal;
 public class Jogadores {
     private String nome;
     private int quantidadeJogos;
+    private int somaPontuacao;
     private String[] jogosAnteriores = new String[10];
     private String[] dataDoJogo = new String[10];
     
@@ -24,17 +25,12 @@ public class Jogadores {
     }
 
     public double getMediaJogos() {
-        if (jaJogou() == true) {
-           double acumulador = 0, media = 0;
-            for(int i = 0; i<10; i++) {
-                if (this.jogosAnteriores[i] != null) {
-                    acumulador += Integer.parseInt(this.jogosAnteriores[i]); 
-                }
-            }
-            media = acumulador/quantidadeJogos;
-            return media;
+        if (quantidadeJogos == 0) {
+            return 0;
         }
-        return 0;
+        else {
+            return (double) somaPontuacao/quantidadeJogos;
+        }
     }
 
     public String getJogosAnteriores(int index) {
@@ -46,12 +42,21 @@ public class Jogadores {
     }
 
     public void setJogosAnteriores(int acertos) {
+        moverArray();
+        jogosAnteriores[0] = Integer.toString(acertos);
+        dataDoJogo[0] = Data.retornarData();
+    }
+    
+    public void moverArray() {
+        String[] auxJogos = new String [10];
+        String[] auxData = new String [10];
+        for(int i = 0; i<9; i++) {
+            auxJogos[i+1] = this.jogosAnteriores[i];
+            auxData[i+1] = this.dataDoJogo[i];
+        }
         for (int i = 0; i<10; i++) {
-            if (this.jogosAnteriores[i] == null) {
-                jogosAnteriores[i] = Integer.toString(acertos);
-                dataDoJogo[i] = Data.retornarData();
-                break;
-            }
+            this.jogosAnteriores[i] = auxJogos[i];
+            this.dataDoJogo[i] = auxData[i];
         }
     }
 
@@ -70,5 +75,13 @@ public class Jogadores {
             }
         }
         return false;
+    }
+
+    public int getSomaPontuacao() {
+        return somaPontuacao;
+    }
+
+    public void setSomaPontuacao(int somaPontuacao) {
+        this.somaPontuacao = this.somaPontuacao + somaPontuacao;
     }
 }

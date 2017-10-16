@@ -1,19 +1,11 @@
 package quiz;
-import quiz.Questao;
 import java.util.ArrayList;
 import java.util.Collections;
 
 
 public class BancoQuestoes {
-    
-    public static int quantidade ;
-    public static double soma ;
     private static ArrayList<Questao>questoes;
-    
-    public static double getMedia(){
-        return soma/quantidade;
-    }
-    
+
      public static ArrayList<Questao> getQuestoes() {
         if (questoes == null) {
             questoes = new ArrayList<>();
@@ -49,9 +41,6 @@ public class BancoQuestoes {
             questoes.add(new Questao("30","O peso total de todos os cupins na terra é muito maior que o peso total de humanos.", "V"));
             Collections.shuffle(questoes);
         } 
-        else {
-           // Collections.shuffle(questoes);
-        }
         return questoes;
     }
 }
