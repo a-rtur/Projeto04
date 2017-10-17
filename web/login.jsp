@@ -26,7 +26,7 @@
         <div id="conteudo">
             <form action="Login" method="post">
                 <center>
-                    <input type="text" name="txtNome">
+                    <input type="text" name="txtNome" required>
                     <input type="submit" name="iniciar" value="Iniciar">
                 </center>
             </form>
