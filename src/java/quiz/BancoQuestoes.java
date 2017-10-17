@@ -37,7 +37,7 @@ public class BancoQuestoes {
             questoes.add(new Questao("26","Todos os insetos tem seis patas.", "V"));
             questoes.add(new Questao("27","Durante sua vida, um homem com uma alimentação normal pode ingerir uma quantidade de alimentos equivalente ao peso de cem elefantes adultos.", "F"));
             questoes.add(new Questao("28","Se você chora no espaço suas lágrimas ficam no rosto.", "V"));
-            questoes.add(new Questao("29","A principal limitação dos neurônios do nosso cérebro é que se sofrem algum dado não tem a possibilidade de se regenerar.", "F"));
+            questoes.add(new Questao("29","A principal limitação dos neurônios do nosso cérebro é que se sofrem algum dano não tem a possibilidade de se regenerar.", "F"));
             questoes.add(new Questao("30","O peso total de todos os cupins na terra é muito maior que o peso total de humanos.", "V"));
             Collections.shuffle(questoes);
         } 
