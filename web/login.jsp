@@ -9,6 +9,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
         <link rel="stylesheet" type="text/css" href="assets/css/style.css"/>
+        
     </head>
     <body>
         <%
@@ -24,11 +25,17 @@
             }
         %>
         <div id="conteudo">
+           
             <form action="Login" method="post">
+                
                 <center>
-                    <input type="text" name="txtNome" required>
+                    <h2> Faça seu login para jogar</h2></br>
+                    <input type="text" placeholder="Digite seu usuário" name="txtNome" required>
+                    <center>
                     <input type="submit" name="iniciar" value="Iniciar">
+                    </center>
                 </center>
+                      
             </form>
         </div>
         <%@include file="WEB-INF/jspf/rodape.jspf" %>
